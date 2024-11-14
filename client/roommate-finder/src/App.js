@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LandingPage from './landingPage';
-import CreateAccount from './createAccount';
-import SignIn from './signIn';
+import LandingPage from './landing/landingPage';
+import CreateAccount from './register/createAccount';
+import SignIn from './signin/signIn';
 
 function App() {
     return (
@@ -12,6 +12,7 @@ function App() {
                 <Route path="/signIn" element={<SignIn />} />
             </Routes>
         </Router>
+
     );
 }
 

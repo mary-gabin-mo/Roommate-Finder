@@ -1,9 +1,9 @@
 import './landingPage.css';
-import people from './images/people.png';
-import chatbot from './images/chatbot.png';
-import pfp from './images/pfp.png';
-import pickinguser from './images/pickinguser.png';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import people from '../images/people.png';
+import chatbot from '../images/chatbot.png';
+import pfp from '../images/pfp.png';
+import pickinguser from '../images/pickinguser.png';
+import { useNavigate } from 'react-router-dom'; 
 
 function LandingPage() {
     const navigate = useNavigate(); 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import chatbotLaptop from './images/chatbotLaptop.png';
+import chatbotLaptop from '../images/chatbotLaptop.png';
 import './signIn.css';
 
 function SignIn() {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import botProfile from './images/botProfile.png';
+import botProfile from '../images/botProfile.png';
 import './createAccount.css';
 
 function CreateAccount() {
