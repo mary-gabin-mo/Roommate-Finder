@@ -1,19 +1,29 @@
 import React, { useState } from 'react';
 import chatbotLaptop from '../images/chatbotLaptop.png';
 import './signIn.css';
+import { useNavigate } from 'react-router-dom';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
+/* need to replace this with api connected to backend */
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent page reload
     console.log('User Details:', { email, password });
 
     // validate inputs
     if (!email || !password) {
-      alert('All fields are required!');
+      alert('All fields are required');
       return;
+    }
+
+    if (email === 'test@example.com' && password === 'password') {
+      alert('Login successful');
+      navigate('/Home'); // redirect to home page
+    } else {
+      alert('Invalid credentials');
     }
 
   };
