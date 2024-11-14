@@ -53,10 +53,12 @@ body {
   background-color: #E1B573;
   color: #262628;
   font-size: 20px;
-  font-weight: 400;
   border: none;
   border-radius: 30px;
   cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: -3px 3px 0px #262628;
+  border: 2px solid #262628;
   background-size: 100% 100%;
   height: 59px;
   left:204px;
@@ -64,6 +66,11 @@ body {
   top: 550px;
   width: 180px;
  }
+
+ .hero-section .button:hover {
+  background-color: #E1B573;
+  box-shadow: -4px 4px 0px #262628;
+}
 
 .find-your-perfect {
   color: #262628;
