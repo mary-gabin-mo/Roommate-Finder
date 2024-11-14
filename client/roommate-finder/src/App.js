@@ -7,51 +7,57 @@ import pickinguser from './images/pickinguser.png';
 function App() {
   return (
     <main>
-      <div className="App">
-        <header className="App-header">
-          <h1 className="logo">LOGO</h1>
-          <nav>
-            <a href="#signin" className='signIn'>Sign in</a>
-          </nav>
-
-          <section className="heroSection">
-            <div className="heroContent">
-              <h2>Find Your Perfect <br/> Roommate Today!</h2>
-              <button>
-                Create Account
-              </button>
+      <div className="landing-page">
+        <div className="div">
+          <header className="nav-bar">
+            <h1 className="logo">LOGO</h1>
+            <nav>
+              <a href="#signin" className="sign-in">Sign in</a>
+            </nav>
+            </header>
+        </div>
+          <section className="hero-section">
+            <div className="hero-content">
+              <h2 className="find-your-perfect">Find Your Perfect <br /> Roommate Today!</h2>
+              <button className="button">Create Account</button>
             </div>
-            <img src={people} alt='people'/>
+            <img className="people" src={people} alt="people" />
           </section>
-          
+
           <section className="features">
-            <h2 className="sectionTitle">Your Perfect Match, Right Here On Campus</h2>
-            <div>
-              <div>
-                <div>
-                  <p>Find potential roommates that match your criteria</p>
-                  <img src={pickinguser} alt='pickinguser'/>
+            <h2 className="section-title">Your Perfect Match, Right Here On Campus</h2>
+
+            <div className="group">
+              <div className="overlap-group-wrapper">
+                <div className="overlap-group">
+                  <div className="rectangle" />
+                  <p className="p">Set your preferences and interests</p>
+                  <img className="pfp" src={pfp} alt="pfp" />
                 </div>
               </div>
 
-              <div>
-                <div>
-                  <p>Start chatting with potential roommates to find the right fit</p>
-                  <img src={chatbot} alt='chatbot'/>
+              <div className="overlap-wrapper">
+                <div className="overlap-2">
+                  <div className="rectangle-2" />
+                  <p className="text-wrapper-2">
+                    Find potential roommates that match your criteria
+                  </p>
+                  <img className="picking-user" src={pickinguser} alt="pickinguser" />
                 </div>
               </div>
 
-              <div>
-                <div>
-                  <p>Start chatting with potential roommates to find the right fit</p>
-                  <img src={pfp} alt='pfp'/>
+              <div className="div-wrapper">
+                <div className="overlap-3">
+                  <div className="rectangle-3" />
+                  <p className="text-wrapper-3">
+                    Start chatting with potential roommates to find the right fit
+                  </p>
+                  <img className="chatbot" src={chatbot} alt="chatbot" />
                 </div>
               </div>
             </div>
           </section>
-          <section></section>
-        </header>
-      </div>
+          </div>
     </main>
   );
 }
