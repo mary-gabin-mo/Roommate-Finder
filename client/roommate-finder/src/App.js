@@ -1,5 +1,8 @@
 import './App.css';
-import people from 'client/roommate-finder/src/images/people.png';
+import people from './images/people.png';
+import chatbot from './images/chatbot.png';
+import pfp from './images/pfp.png';
+import pickinguser from './images/pickinguser.png';
 
 function App() {
   return (
@@ -18,7 +21,7 @@ function App() {
                 Create Account
               </button>
             </div>
-            <img src={people}/>
+            <img src={people} alt='people'/>
           </section>
           
           <section className="features">
@@ -27,21 +30,21 @@ function App() {
               <div>
                 <div>
                   <p>Find potential roommates that match your criteria</p>
-                  {/*<img src></img>*/}
+                  <img src={pickinguser} alt='pickinguser'/>
                 </div>
               </div>
 
               <div>
                 <div>
                   <p>Start chatting with potential roommates to find the right fit</p>
-                  {/*<img src></img>*/}
+                  <img src={chatbot} alt='chatbot'/>
                 </div>
               </div>
 
               <div>
                 <div>
                   <p>Start chatting with potential roommates to find the right fit</p>
-                  {/*<img src></img>*/}
+                  <img src={pfp} alt='pfp'/>
                 </div>
               </div>
             </div>
