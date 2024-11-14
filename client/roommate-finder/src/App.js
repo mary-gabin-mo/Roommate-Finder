@@ -3,22 +3,29 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          AJ test fork.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <div className="App">
+        <header className="App-header">
+          <h1 className="logo">LOGO</h1>
+          <nav>
+            <a href="#signin" className='signIn'>Sign in</a>
+          </nav>
+
+          <section className="heroSection">
+            <div className="heroContent">
+              <h2>Find Your Perfect <br/> Roommate Today!</h2>
+              <button>
+                Create Account
+              </button>
+            </div>
+            {/*<img src></img>*/}
+          </section>
+
+          <h2 className="sectionTitle">Your Perfect Match, Right Here On Campus</h2>
+          <section></section>
+        </header>
+      </div>
+    </main>
   );
 }
 
