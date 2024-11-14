@@ -22,19 +22,19 @@ body {
     background-color: #fff6ee;
 }
 
-.logo-wrapper {
+/*.logo-wrapper {
     position: relative;
     top: -112px; 
     right: 12px;
-    margin-bottom: -50px; /* Ensures no extra spacing below */
+    margin-bottom: -50px;
 }
 
-/*.logo {
+.logo {
     font-size: 20px;
     font-weight: 700;
     text-align: left;
     color: #262628;
-}
+} */
 
 
 .main-content {
@@ -42,7 +42,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-} */
+} 
 
 .content-columns {
     display: flex;
