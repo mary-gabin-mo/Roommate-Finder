@@ -28,9 +28,6 @@ function CreateAccount() {
   return (
     <main className="create-account-container">
       <div className="content-wrapper">
-        <header className="logo-wrapper">
-          <h1 className="logo">LOGO</h1>
-        </header>
         <section className="main-content">
           <div className="content-columns">
             <div className="image-column">

@@ -29,7 +29,7 @@ body {
     margin-bottom: -50px; /* Ensures no extra spacing below */
 }
 
-.logo {
+/*.logo {
     font-size: 20px;
     font-weight: 700;
     text-align: left;
@@ -42,7 +42,7 @@ body {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-}
+} */
 
 .content-columns {
     display: flex;
