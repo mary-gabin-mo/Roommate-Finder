@@ -1,3 +1,5 @@
+import './Requests.css';
+
 function Requests() {
     return (
         <div>

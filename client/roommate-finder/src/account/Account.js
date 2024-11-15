@@ -1,3 +1,4 @@
+import './Account.css';
 function Account() {
     return (
         <div>
