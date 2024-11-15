@@ -4,6 +4,9 @@ import CreateAccount from './register/createAccount';
 import SignIn from './signin/signIn';
 import Home from './home/Home';
 import HeaderLayout from './header/headerLayout';
+import Requests from './requests/Requests';
+import Messages from './messages/Messages';
+import Account from './account/Account';
 
 function App() {
     return (
@@ -13,6 +16,9 @@ function App() {
                 <Route path="/createAccount" element={<CreateAccount />} />
                 <Route path="/signIn" element={<SignIn />} />
                 <Route path="/Home" element={ <HeaderLayout> <Home /></HeaderLayout>}/>
+                <Route path="/Requests" element={ <HeaderLayout> <Requests /></HeaderLayout>}/>
+                <Route path="/Messages" element={ <HeaderLayout> <Messages /></HeaderLayout>}/>
+                <Route path="/Account" element={ <HeaderLayout> <Account /></HeaderLayout>}/>
             </Routes>
         </Router>
 
