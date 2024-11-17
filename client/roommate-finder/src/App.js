@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LandingPage from './landing/landingPage';
+import CreateAccount from './register/createAccount';
+import SignIn from './signin/signIn';
+import Home from './home/Home';
+import HeaderLayout from './header/headerLayout';
+import Requests from './requests/Requests';
+import Messages from './messages/Messages';
+import Account from './account/Account';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          AJ test fork.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Routes>
+                <Route path="/" element={<LandingPage />} />
+                <Route path="/createAccount" element={<CreateAccount />} />
+                <Route path="/signIn" element={<SignIn />} />
+                <Route path="/Home" element={ <HeaderLayout> <Home /></HeaderLayout>}/>
+                <Route path="/Requests" element={ <HeaderLayout> <Requests /></HeaderLayout>}/>
+                <Route path="/Messages" element={ <HeaderLayout> <Messages /></HeaderLayout>}/>
+                <Route path="/Account" element={ <HeaderLayout> <Account /></HeaderLayout>}/>
+            </Routes>
+        </Router>
+
+    );
 }
 
 export default App;

@@ -1,0 +1,31 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #fdf8f3;
+    margin: 0;
+    padding: 0;
+}
+
+.sign-in-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #fff6ee;
+}
+
+.sign-in-button {
+    background-color: #E1B573;
+    color: #262628;
+    font-size: 20px;
+    border: 2px solid #262628;
+    padding: 12px 40px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: -3px 3px 0px #262628;
+}
+
+.sign-in-button:hover {
+    background-color: #E1B573;
+    box-shadow: -4px 4px 0px #262628;
+}
