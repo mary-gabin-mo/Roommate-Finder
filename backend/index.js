@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
-import mysql from "mysql";
+import mysql from "mysql2";
+import cors from "cors";
 
 dotenv.config();
 console.log("Database Host:", process.env.MYSQL_ADDON_HOST);
@@ -22,6 +23,8 @@ db.connect((err) => {
   }
   console.log("Connected to the MySQL database!");
 });
+
+app.use(cors())
 
 app.get("/", (req, res) => {
   res.json("hello this is the backend");
