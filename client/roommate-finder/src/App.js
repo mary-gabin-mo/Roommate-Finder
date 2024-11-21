@@ -7,6 +7,7 @@ import HeaderLayout from './header/headerLayout';
 import Requests from './requests/Requests';
 import Messages from './messages/Messages';
 import Account from './account/Account';
+import Admin from './admin';
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/createAccount" element={<CreateAccount />} />
                 <Route path="/signIn" element={<SignIn />} />
+                <Route path="/Admin" element={<Admin />} />
                 <Route path="/Home" element={ <HeaderLayout> <Home /></HeaderLayout>}/>
                 <Route path="/Requests" element={ <HeaderLayout> <Requests /></HeaderLayout>}/>
                 <Route path="/Messages" element={ <HeaderLayout> <Messages /></HeaderLayout>}/>
