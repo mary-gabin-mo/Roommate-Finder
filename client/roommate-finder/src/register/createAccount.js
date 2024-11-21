@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import botProfile from '../images/botProfile.png';
+import axios from 'axios';
 import './createAccount.css';
 
 function CreateAccount() {
@@ -7,9 +8,8 @@ function CreateAccount() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
-    console.log('User Details:', { name, email, password });
 
     // validate inputs
     if (!name || !email || !password) {
@@ -22,7 +22,25 @@ function CreateAccount() {
       return;
     }
 
-    alert('Account created successfully!');
+    try {
+      // call to the backend
+      const response = await axios.post("http://localhost:8800/api/auth/register", {
+        name,
+        email,
+        password,
+        user_type: "STUDENT", 
+      });
+
+      // show success message
+      alert(response.data.message);
+
+      // clear the input fields
+      setName('');
+      setEmail('');
+      setPassword('');
+    } catch (error) {
+      alert(error.response?.data?.message || "Error creating account. Please try again.");
+    }
   };
 
   return (
@@ -39,7 +57,6 @@ function CreateAccount() {
                 <h2 className="form-title">Create account</h2>
                 <form onSubmit={handleSubmit}>
 
-                  {/* name input */}
                   <div>
                     <label htmlFor="fullName" className="input-label">Full Name</label>
                     <input
@@ -53,7 +70,6 @@ function CreateAccount() {
                     />
                   </div>
 
-                  {/* email input */}
                   <div>
                     <label htmlFor="emailAddress" className="input-label">Email Address</label>
                     <input
@@ -67,7 +83,6 @@ function CreateAccount() {
                     />
                   </div>
 
-                  {/* password input */}
                   <div>
                     <label htmlFor="password" className="input-label">Password</label>
                     <input
