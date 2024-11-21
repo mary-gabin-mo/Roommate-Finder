@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Home.css';
 import glasses from '../images/glassespfp.png';
 import green from '../images/greenpfp.png';
