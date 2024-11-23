@@ -3,6 +3,7 @@ import express from "express";
 import mysql from "mysql2";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import profileRoutes from "./routes/profileRoutes.js";
 
 dotenv.config();
 console.log("Database Host:", process.env.MYSQL_ADDON_HOST);
@@ -58,3 +59,4 @@ app.listen(8800, () => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
