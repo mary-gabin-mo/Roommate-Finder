@@ -4,7 +4,7 @@ import './Account.css';
 function Account() {
     const [isEditing, setIsEditing] = useState(false); 
 
-
+    // hard code for now
     const [profile, setProfile] = useState({
         fullName: 'John Doe',
         description: 'Looking for a clean, quiet roommate.',
@@ -38,7 +38,7 @@ function Account() {
         <div className="profile-container">
             {isEditing ? (
                 <form className="form-wrapper" onSubmit={handleSave}>
-                    <h1 className="title">Edit Profile</h1>
+                    <h1 className="title">Edit Account</h1>
 
                     <label className="input-label">Full Name</label>
                     <input
@@ -137,7 +137,7 @@ function Account() {
             ) : (
 
                 <div className="view-mode">
-                    <h1 className="title">Profile</h1>
+                    <h1 className="title">Account</h1>
                     <p className="view-field"><strong>Full Name:</strong> {profile.fullName}</p>
                     <p className="view-field"><strong>Description:</strong> {profile.description}</p>
                     <p className="view-field"><strong>Rent Range:</strong> {profile.rentRange}</p>
