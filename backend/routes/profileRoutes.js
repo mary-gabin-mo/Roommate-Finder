@@ -1,50 +1,74 @@
 import express from "express";
-import bcrypt from "bcrypt";
 
 const router = express.Router();
 
-// create profile
-router.post("/create-profile", async (req, res) => {
-  const { profile_id, user_id, description } = req.body;
-
-  if (!name || !email || !password) {
-    return res.status(400).json({ message: "All fields are required!" });
-  }
+router.post("/profile", async (req, res) => {
+  const {
+    user_ID,
+    description,
+    rentRange,
+    cleanliness,
+    roomCapacity,
+    location,
+    noiseTolerance,
+    socialHabits,
+    sleepSchedule,
+  } = req.body;
 
   try {
-    // check if email already exists
-    const checkQuery = "SELECT * FROM User WHERE email = ?";
-    req.db.query(checkQuery, [email], async (err, result) => {
-      if (err) {
-        console.error("Error checking email:", err);
-        return res.status(500).json({ message: "Internal server error" });
-      }
+    const profileQuery = `INSERT INTO Profile (profile_ID, user_ID, description) VALUES (UUID(), ?, ?)`;
+    const [profileResult] = await connection.query(profileQuery, [
+      user_ID,
+      description,
+    ]);
+    const profile_ID = profileResult.insertId; // auto-increment
 
-      if (result.length > 0) {
-        return res.status(400).json({ message: "Email already exists!" });
-      }
+    const preferenceQuery = `INSERT INTO Preference (preference_ID, profile_ID, user_ID) VALUES (UUID(), ?, ?)`;
+    const [preferenceResult] = await connection.query(preferenceQuery, [
+      profile_ID,
+      user_ID,
+    ]);
+    const preference_ID = preferenceResult.insertId; // auto-increment
 
-      // hash password
-      const hashedPassword = await bcrypt.hash(password, 10);
+    const preferenceQueries = [
+      rentRange && {
+        query: "INSERT INTO RentRange (preference_ID, range) VALUES (?, ?)",
+        values: [preferenceId, rentRange],
+      },
+      cleanliness && {
+        query:
+          "INSERT INTO Cleanliness (preference_ID, clean_level) VALUES (?, ?)",
+        values: [preferenceId, cleanliness],
+      },
+      roomCapacity && {
+        query:
+          "INSERT INTO RoomCapacity (preference_ID, room_amount) VALUES (?, ?)",
+        values: [preferenceId, roomCapacity],
+      },
+      location && {
+        query: "INSERT INTO Location (preference_ID, quadrant) VALUES (?, ?)",
+        values: [preferenceId, location],
+      },
+      noiseTolerance && {
+        query:
+          "INSERT INTO NoiseTolerance (preference_ID, tolerance_level) VALUES (?, ?)",
+        values: [preferenceId, noiseTolerance],
+      },
+      socialHabits && {
+        query: "INSERT INTO SocialHabits (preference_ID, habits) VALUES (?, ?)",
+        values: [preferenceId, socialHabits],
+      },
+      sleepSchedule && {
+        query:
+          "INSERT INTO SleepSchedule (preference_ID, sleep_type) VALUES (?, ?)",
+        values: [preferenceId, sleepSchedule],
+      },
+    ];
 
-      // insert user into the database
-      const insertQuery =
-        "INSERT INTO User (name, email, password, user_type) VALUES (?, ?, ?, ?)";
-      req.db.query(
-        insertQuery,
-        [name, email, hashedPassword, user_type || "STUDENT"],
-        (err, result) => {
-          if (err) {
-            console.error("Error inserting user:", err);
-            return res.status(500).json({ message: "Internal server error" });
-          }
-
-          res.status(201).json({ message: "User registered successfully!" });
-        }
-      );
-    });
-  } catch (error) {
-    console.error("Error handling registration:", error);
-    res.status(500).json({ message: "Internal server error" });
+    return res.status(200).json({ message: "Profile successfully created" });
+  } catch (err) {
+    return res.status(500).json(err);
   }
 });
+
+export default router;

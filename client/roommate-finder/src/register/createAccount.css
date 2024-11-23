@@ -22,21 +22,6 @@ body {
     background-color: #fff6ee;
 }
 
-/*.logo-wrapper {
-    position: relative;
-    top: -112px; 
-    right: 12px;
-    margin-bottom: -50px;
-}
-
-.logo {
-    font-size: 20px;
-    font-weight: 700;
-    text-align: left;
-    color: #262628;
-} */
-
-
 .main-content {
     display: flex;
     flex-direction: row;
