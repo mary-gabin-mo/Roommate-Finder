@@ -3,8 +3,9 @@ import express from "express";
 const router = express.Router();
 
 // not complete
+// lets write everything we will do for profile inside here
 
-router.post("/profile", async (req, res) => {
+router.post("/createProfile", async (req, res) => {
   const {
     profile_ID,
     user_ID,

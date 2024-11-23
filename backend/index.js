@@ -58,4 +58,4 @@ app.listen(8800, () => {
 });
 
 app.use("/api/auth", authRoutes);
-app.use("/api/profile", profileRoutes);
+app.use("/api/createProfile", profileRoutes);
