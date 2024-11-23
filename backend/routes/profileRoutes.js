@@ -3,8 +3,10 @@ import express from "express";
 const router = express.Router();
 
 // not complete
+// lets write everything we will do for profile inside here
 
-router.post("/profile", async (req, res) => {
+
+router.post("/createProfile", async (req, res) => {
     const {
         profile_ID,
         user_ID,
@@ -41,6 +43,10 @@ router.post("/profile", async (req, res) => {
       if (err) return res.json(err);
       return res.json("Profile successfully created")
     })*/
+
+});
+
+router.post("/updateProfile", async (req, res) => {
 
 });
 
