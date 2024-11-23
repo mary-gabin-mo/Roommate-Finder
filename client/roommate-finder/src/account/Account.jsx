@@ -1,235 +1,158 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './Account.css';
 
 function Account() {
-    const [isEditing, setIsEditing] = useState(false);
+    const [isEditing, setIsEditing] = useState(false); 
 
-    const [formData, setFormData] = useState({
-        fullName: "John Doe",
-        description: "Looking for a clean, quiet roommate.",
-        rentRange: "1000",
-        cleanliness: "8",
-        roomCapacity: "1",
-        location: "NW",
-        noiseTolerance: "5",
-        socialHabits: "Introvert",
-        sleepSchedule: "Early Bird",
+
+    const [profile, setProfile] = useState({
+        fullName: 'John Doe',
+        description: 'Looking for a clean, quiet roommate.',
+        rentRange: '$1000',
+        cleanliness: '8 / 10',
+        roomCapacity: '1 / 10',
+        location: 'NW',
+        noiseTolerance: '5 / 10',
+        socialHabits: 'Introvert',
+        sleepSchedule: 'Night Owl',
     });
 
-    const handleChange = (field, value) => {
-        setFormData((prevState) => ({
-            ...prevState,
-            [field]: value,
-        }));
-    };
-
-    const handleSave = () => {
+    const handleSave = (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target);
+        setProfile({
+            fullName: formData.get('fullName'),
+            description: formData.get('description'),
+            rentRange: formData.get('rentRange'),
+            cleanliness: formData.get('cleanliness'),
+            roomCapacity: formData.get('roomCapacity'),
+            location: formData.get('location'),
+            noiseTolerance: formData.get('noiseTolerance'),
+            socialHabits: formData.get('socialHabits'),
+            sleepSchedule: formData.get('sleepSchedule'),
+        });
         setIsEditing(false);
-        console.log("Updated Data:", formData);
-        alert("Profile updated successfully");
     };
 
     return (
-        <main className="profile-container">
-            <form className="form-wrapper" onSubmit={(e) => e.preventDefault()}>
+        <div className="profile-container">
+            {isEditing ? (
+                <form className="form-wrapper" onSubmit={handleSave}>
+                    <h1 className="title">Edit Profile</h1>
 
-                <div>
-                    <label htmlFor="fullName" className="input-label">
-                        Full Name
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.fullName}</p>
-                    ) : (
-                        <input
-                            type="text"
-                            id="fullName"
-                            className="text-input"
-                            value={formData.fullName}
-                            onChange={(e) => handleChange("fullName", e.target.value)}
-                        />
-                    )}
-                </div>
+                    <label className="input-label">Full Name</label>
+                    <input
+                        className="text-input"
+                        type="text"
+                        name="fullName"
+                        defaultValue={profile.fullName}
+                    />
 
-                <div>
-                    <label htmlFor="description" className="input-label">
-                        Description
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.description}</p>
-                    ) : (
-                        <textarea
-                            id="description"
-                            className="text-area"
-                            value={formData.description}
-                            onChange={(e) => handleChange("description", e.target.value)}
-                        />
-                    )}
-                </div>
+                    <label className="input-label">Description</label>
+                    <textarea
+                        className="text-area"
+                        name="description"
+                        defaultValue={profile.description}
+                    ></textarea>
 
-                <div>
-                    <label htmlFor="rentRange" className="input-label">
-                        Rent Range
-                    </label>
-                    {!isEditing ? (
-                        <p>${formData.rentRange}</p>
-                    ) : (
-                        <input
-                            type="number"
-                            id="rentRange"
-                            className="text-input"
-                            value={formData.rentRange}
-                            onChange={(e) => handleChange("rentRange", e.target.value)}
-                        />
-                    )}
-                </div>
+                    <label className="input-label">Rent Range</label>
+                    <input
+                        className="text-input"
+                        type="number"
+                        name="rentRange"
+                        max="5000"
+                        defaultValue={profile.rentRange}
+                    />
 
-                <div>
-                    <label htmlFor="cleanliness" className="input-label">
-                        Cleanliness
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.cleanliness} / 10</p>
-                    ) : (
-                        <input
-                            type="number"
-                            id="cleanliness"
-                            className="text-input"
-                            value={formData.cleanliness}
-                            onChange={(e) => handleChange("cleanliness", e.target.value)}
-                            min="1"
-                            max="10"
-                        />
-                    )}
-                </div>
+                    <label className="input-label">Cleanliness</label>
+                    <input
+                        className="text-input"
+                        type="number"
+                        name="cleanliness"
+                        min="1"
+                        max="10"
+                        defaultValue={profile.cleanliness}
+                    />
 
-                <div>
-                    <label htmlFor="roomCapacity" className="input-label">
-                        Room Capacity
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.roomCapacity} / 10</p>
-                    ) : (
-                        <input
-                            type="number"
-                            id="roomCapacity"
-                            className="text-input"
-                            value={formData.roomCapacity}
-                            onChange={(e) => handleChange("roomCapacity", e.target.value)}
-                            min="1"
-                            max="10"
-                        />
-                    )}
-                </div>
+                    <label className="input-label">Room Capacity</label>
+                    <input
+                        className="text-input"
+                        type="number"
+                        name="roomCapacity"
+                        min="1"
+                        max="10"
+                        defaultValue={profile.roomCapacity}
+                    />
 
-                <div>
-                    <label htmlFor="location" className="input-label">
-                        Location
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.location}</p>
-                    ) : (
-                        <select
-                            id="location"
-                            className="text-input"
-                            value={formData.location}
-                            onChange={(e) => handleChange("location", e.target.value)}
+                    <label className="input-label">Noise Tolerance</label>
+                    <input
+                        className="text-input"
+                        type="number"
+                        name="noiseTolerance"
+                        defaultValue={profile.noiseTolerance}
+                        min="1"
+                        max="10"   
+                    />
+
+                    <label className="input-label">Location</label>
+                    <select
+                        className="text-input"
+                        name="location"
+                        defaultValue={profile.location}
+
                         >
                             <option value="NW">Northwest</option>
                             <option value="NE">Northeast</option>
                             <option value="SW">Southwest</option>
                             <option value="SE">Southeast</option>
                         </select>
-                    )}
-                </div>
 
-                <div>
-                    <label htmlFor="noiseTolerance" className="input-label">
-                        Noise Tolerance
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.noiseTolerance} / 10</p>
-                    ) : (
-                        <input
-                            type="number"
-                            id="noiseTolerance"
-                            className="text-input"
-                            value={formData.noiseTolerance}
-                            onChange={(e) => handleChange("noiseTolerance", e.target.value)}
-                            min="1"
-                            max="10"
-                        />
-                    )}
-                </div>
+                    <label className="input-label">Social Habits</label>
+                    <select
+                        className="text-input"
+                        name="socialHabits"
+                        defaultValue={profile.socialHabits}
 
-                <div>
-                    <label htmlFor="socialHabits" className="input-label">
-                        Social Habits
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.socialHabits}</p>
-                    ) : (
-                        <select
-                            id="socialHabits"
-                            className="text-input"
-                            value={formData.socialHabits}
-                            onChange={(e) => handleChange("socialHabits", e.target.value)}
                         >
                             <option value="Extrovert">Extrovert</option>
                             <option value="Introvert">Introvert</option>
                             <option value="Ambivert">Ambivert</option>
                         </select>
-                    )}
-                </div>
 
-                <div>
-                    <label htmlFor="sleepSchedule" className="input-label">
-                        Sleep Schedule
-                    </label>
-                    {!isEditing ? (
-                        <p>{formData.sleepSchedule}</p>
-                    ) : (
-                        <select
-                            id="sleepSchedule"
-                            className="text-input"
-                            value={formData.sleepSchedule}
-                            onChange={(e) => handleChange("sleepSchedule", e.target.value)}
+                    <label className="input-label">Sleep Schedule</label>
+                    <select
+                        className="text-input"
+                        name="sleepSchedule"
+                        defaultValue={profile.sleepSchedule}
+
                         >
                             <option value="Early Bird">Early Bird</option>
                             <option value="Night Owl">Night Owl</option>
                         </select>
-                    )}
-                </div>
 
-                <div>
-                    {!isEditing ? (
-                        <button
-                            type="button"
-                            className="edit-button"
-                            onClick={() => setIsEditing(true)}
-                        >
-                            <span className="edit">Edit</span>
-                        </button>
-                    ) : (
-                        <>
-                            <button
-                                type="button"
-                                className="edit-button"
-                                onClick={handleSave}
-                            >
-                                <span className="save">Save Changes</span>
-                            </button>
-                            <button
-                                type="button"
-                                className="edit-button"
-                                onClick={() => setIsEditing(false)}
-                            >
-                                <span className="cancel">Cancel</span>
-                            </button>
-                        </>
-                    )}
+                    <button type="submit" className="edit-button">
+                        Save
+                    </button>
+                </form>
+            ) : (
+
+                <div className="view-mode">
+                    <h1 className="title">Profile</h1>
+                    <p className="view-field"><strong>Full Name:</strong> {profile.fullName}</p>
+                    <p className="view-field"><strong>Description:</strong> {profile.description}</p>
+                    <p className="view-field"><strong>Rent Range:</strong> {profile.rentRange}</p>
+                    <p className="view-field"><strong>Cleanliness:</strong> {profile.cleanliness}</p>
+                    <p className="view-field"><strong>Room Capacity:</strong> {profile.roomCapacity}</p>
+                    <p className="view-field"><strong>Location:</strong> {profile.location}</p>
+                    <p className="view-field"><strong>Noise Tolerance:</strong> {profile.noiseTolerance}</p>
+                    <p className="view-field"><strong>Social Habits:</strong> {profile.socialHabits}</p>
+                    <p className="view-field"><strong>Sleep Schedule:</strong> {profile.sleepSchedule}</p>
+                    <button className="edit-button" onClick={() => setIsEditing(true)}>
+                        Edit
+                    </button>
                 </div>
-            </form>
-        </main>
+            )}
+        </div>
     );
 }
 
