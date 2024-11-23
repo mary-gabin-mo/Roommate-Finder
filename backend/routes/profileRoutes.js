@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.post("/profile", async (req, res) => {
   const {
+    profile_ID,
     user_ID,
     description,
     rentRange,
