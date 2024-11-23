@@ -39,15 +39,13 @@ function CreateProfile({ userId }) {
       const response = await axios.post("http://localhost:8800/api/profile", {
         user_id: userId,
         description: formData.description,
-        preferences: {
-          rentRange: formData.rentRange,
-          cleanliness: formData.cleanliness,
-          roomCapacity: formData.roomCapacity,
-          location: formData.location,
-          noiseTolerance: formData.noiseTolerance,
-          socialHabits: formData.socialHabits,
-          sleepSchedule: formData.sleepSchedule,
-        },
+        rentRange: formData.rentRange,
+        cleanliness: formData.cleanliness,
+        roomCapacity: formData.roomCapacity,
+        location: formData.location,
+        noiseTolerance: formData.noiseTolerance,
+        socialHabits: formData.socialHabits,
+        sleepSchedule: formData.sleepSchedule,
       });
 
       alert(response.data.message);
