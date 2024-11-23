@@ -28,12 +28,12 @@ function CreateProfile({ userId }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { fullName, description, rentRange, cleanliness, roomCapacity, location, noiseTolerance, socialHabits, sleepSchedule } = formData;
+    /*const { fullName, description, rentRange, cleanliness, roomCapacity, location, noiseTolerance, socialHabits, sleepSchedule } = formData;
 
     if (!fullName || !description || !rentRange || !cleanliness || !roomCapacity || !location || !noiseTolerance || !socialHabits.length || !sleepSchedule) {
       alert('All fields are required!');
       return;
-    }
+    } */
 
     try {
       const response = await axios.post("http://localhost:8800/api/profile", {
