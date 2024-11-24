@@ -11,6 +11,7 @@ import Admin from './admin';
 import CreateProfile from './register/createProfile';
 
 function App() {
+    const [acceptedRequests, setAcceptedRequests] = useState([]);
     return (
         <Router>
             <Routes>
