@@ -62,5 +62,5 @@ app.listen(8800, () => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/createProfile", profileRoutes);
-app.use("/api/reuqests", requestsRoutes);
+app.use("/api/requests", requestsRoutes);
 app.use("/api/messages", messagesRoutes);
