@@ -158,4 +158,31 @@ router.post("/decline", async (req, res) => {
     }
 });
 
+router.get("/status", async (req, res) => {
+    const { receiver_ID, sender_ID } = req.query; 
+
+    try {
+        const statusQuery = `
+        SELECT S.status_name 
+        FROM RoommateRequest AS RR
+        NATURAL JOIN Status AS S
+        WHERE RR.receiver_ID = ? OR RR.sender_ID = ?;
+        `;
+
+        req.db.query(statusQuery, [receiver_ID, sender_ID], (err, results) => {
+            if (err) {
+                return res.status(500).json({ error: "Error fetching status", details: err.message });
+            }
+
+            if (results.length === 0) {
+                return res.status(404).json({ error: "No status found for the given users" });
+            }
+
+            res.json(results); 
+        });
+    } catch (err) {
+        res.status(500).json({ error: "Unexpected server error", details: err.message });
+    }
+});
+
 export default router
