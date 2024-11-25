@@ -6,7 +6,7 @@ const router = express.Router();
 router.post("/send", async (req, res) => {
     const { receiver_ID, sender_ID, description } = req.body;
 
-    // hard code for testing works
+    // hard code for testing
     //const receiver_ID = 2;
     //const sender_ID = 1;
     //const description = "This is a test request description";
@@ -46,5 +46,116 @@ router.post("/send", async (req, res) => {
     }
 });
 
+router.post("/accept", async (req, res) => {
+    const { receiver_ID, accepted_by } = req.body;
+
+    // hard code for testing works
+    //const receiver_ID = 2;
+    //const accepted_by = 1;
+
+    try {
+        const statusQuery = `
+        SELECT status_ID FROM RoommateRequest WHERE receiver_ID = ?;
+        `;
+        
+        req.db.query(statusQuery, [receiver_ID], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: "Error fetching status_ID", details: err.message });
+            }
+
+            if (result.length === 0) {
+                return res.status(404).json({ error: "No request found for the given receiver_ID" });
+            }
+
+            const status_ID = result[0].status_ID;
+
+            const updateStatusQuery = `
+            UPDATE Status 
+            SET status_name = 'Accepted', last_updated = CURRENT_DATE
+            WHERE status_ID = ?;
+            `;
+
+            req.db.query(updateStatusQuery, [status_ID], (err) => {
+                if (err) {
+                    return res.status(500).json({ error: "Error updating status", details: err.message });
+                }
+
+                const insertAcceptedQuery = `
+                INSERT INTO Accepted (status_ID, accepted_by)
+                VALUES (?, ?);
+                `;
+
+                req.db.query(insertAcceptedQuery, [status_ID, accepted_by], (err) => {
+                    if (err) {
+                        return res.status(500).json({ error: "Error inserting into Accepted table", details: err.message });
+                    }
+
+                    return res.status(201).json({
+                        message: "Request accepted successfully",
+                        status_ID,
+                    });
+                });
+            });
+        });
+    } catch (err) {
+        return res.status(500).json({ error: "Unexpected server error", details: err.message });
+    }
+});
+
+router.post("/decline", async (req, res) => {
+    const { receiver_ID, declined_by } = req.body;
+
+    // hard code for testing works
+    //const receiver_ID = 2;
+    //const accepted_by = 1;
+
+    try {
+        const statusQuery = `
+        SELECT status_ID FROM RoommateRequest WHERE receiver_ID = ?;
+        `;
+        
+        req.db.query(statusQuery, [receiver_ID], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: "Error fetching status_ID", details: err.message });
+            }
+
+            if (result.length === 0) {
+                return res.status(404).json({ error: "No request found for the given receiver_ID" });
+            }
+
+            const status_ID = result[0].status_ID;
+
+            const updateStatusQuery = `
+            UPDATE Status 
+            SET status_name = 'Declined', last_updated = CURRENT_DATE
+            WHERE status_ID = ?;
+            `;
+
+            req.db.query(updateStatusQuery, [status_ID], (err) => {
+                if (err) {
+                    return res.status(500).json({ error: "Error updating status", details: err.message });
+                }
+
+                const insertDeclinedQuery = `
+                INSERT INTO Declined (status_ID, declined_by)
+                VALUES (?, ?);
+                `;
+
+                req.db.query(insertDeclinedQuery, [status_ID, declined_by], (err) => {
+                    if (err) {
+                        return res.status(500).json({ error: "Error inserting into Declined table", details: err.message });
+                    }
+
+                    return res.status(201).json({
+                        message: "Request declined successfully",
+                        status_ID,
+                    });
+                });
+            });
+        });
+    } catch (err) {
+        return res.status(500).json({ error: "Unexpected server error", details: err.message });
+    }
+});
 
 export default router
