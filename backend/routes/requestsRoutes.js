@@ -6,15 +6,12 @@ const router = express.Router();
 router.post("/send", async (req, res) => {
     const { receiver_ID, sender_ID, description } = req.body;
 
-    // hard code
+    // hard code for testing works
     //const receiver_ID = 2;
     //const sender_ID = 1;
     //const description = "This is a test request description";
 
     try {
-        console.log("Starting the /send endpoint...");
-        console.log(`receiver_ID: ${receiver_ID}, sender_ID: ${sender_ID}, description: ${description}`);
-
         const statusQuery = `
         INSERT INTO Status (status_context, status_name, description, created_date, last_updated)
         VALUES ('Roommate Request', 'Pending', ?, CURRENT_DATE, CURRENT_DATE);
