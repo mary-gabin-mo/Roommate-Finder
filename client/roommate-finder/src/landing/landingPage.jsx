@@ -4,6 +4,7 @@ import chatbot from '../images/chatbot.png';
 import pfp from '../images/pfp.png';
 import pickinguser from '../images/pickinguser.png';
 import { useNavigate } from 'react-router-dom'; 
+import React from 'react';
 
 function LandingPage() {
     const navigate = useNavigate(); 

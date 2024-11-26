@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import botProfile from '../images/botProfile.png';
 import axios from 'axios';
 import './createAccount.css';
+import { useNavigate } from "react-router-dom";
 
 function CreateAccount() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault(); // prevent page reload
@@ -34,11 +36,10 @@ function CreateAccount() {
       // show success message
       alert(response.data.message);
 
-      // clear the input fields
-      setName('');
-      setEmail('');
-      setPassword('');
+      // Redirect to Create Profile page
+      navigate(`/CreateProfile?userId=${response.data.user_id}`);
     } catch (error) {
+      console.error("Error creating account:", error);
       alert(error.response?.data?.message || "Error creating account. Please try again.");
     }
   };
