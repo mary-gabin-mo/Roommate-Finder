@@ -21,7 +21,7 @@ function App() {
                 <Route path="/Admin" element={<Admin />} />
                 <Route path="/Home" element={ <HeaderLayout> <Home /></HeaderLayout>}/>
                 <Route path="/Requests" element={<HeaderLayout><Requests /></HeaderLayout>} />
-                <Route path="/Messages" element={<HeaderLayout><ChatList /></HeaderLayout>} />
+                <Route path="/Messages" element={<HeaderLayout><Messages /></HeaderLayout>} />
                 <Route path="/Account" element={ <HeaderLayout> <Account /></HeaderLayout>}/>
             </Routes>
         </Router>
@@ -32,3 +32,4 @@ function App() {
 export default App;
 
 //<Route path="/Messages/:user2_ID" element={<HeaderLayout><Messages /></HeaderLayout>} />
+// <Route path="/Messages" element={<HeaderLayout><Chatlist /></HeaderLayout>} />
