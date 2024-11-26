@@ -90,3 +90,6 @@ io.on("connection", (socket) => {
 httpServer.listen(8800, () => {
   console.log("Connected to backend");
 });
+
+app.use("/api/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
