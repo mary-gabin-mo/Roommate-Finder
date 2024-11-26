@@ -3,6 +3,7 @@ import express from "express";
 import mysql from "mysql2";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import profileRoutes from "./routes/profileRoutes.js";
 
 dotenv.config();
 console.log("Database Host:", process.env.MYSQL_ADDON_HOST);
@@ -27,7 +28,6 @@ const db = mysql.createConnection({
   port: 3306,
 });
 
-
 db.connect((err) => {
   if (err) {
     console.error("Error connecting to the database:", err.message);
@@ -49,7 +49,7 @@ app.get("/", (req, res) => {
 });*/
 
 app.use((req, res, next) => {
-  req.db = db; 
+  req.db = db;
   next();
 });
 
@@ -58,3 +58,4 @@ app.listen(8800, () => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/profile", profileRoutes);
