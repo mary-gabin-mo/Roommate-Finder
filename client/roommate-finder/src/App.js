@@ -8,13 +8,16 @@ import Requests from './requests/Requests';
 import Messages from './messages/Messages';
 import Account from './account/Account';
 import Admin from './admin';
+import CreateProfile from './register/createProfile';
 
 function App() {
+    const [acceptedRequests, setAcceptedRequests] = useState([]);
     return (
         <Router>
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/createAccount" element={<CreateAccount />} />
+                <Route path="/createProfile" element={<CreateProfile />} />
                 <Route path="/signIn" element={<SignIn />} />
                 <Route path="/Admin" element={<Admin />} />
                 <Route path="/Home" element={ <HeaderLayout> <Home /></HeaderLayout>}/>

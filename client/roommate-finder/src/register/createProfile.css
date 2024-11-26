@@ -17,7 +17,7 @@
 }
 
 .title {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: 700;
     text-align: center;
     margin-bottom: 30px;
@@ -57,7 +57,7 @@
     resize: none;
 }
 
-.edit-button {
+.submit-button {
     background-color: #E1B573;
     color: #262628;
     font-size: 20px;
@@ -71,30 +71,11 @@
     margin-top: 40px;
 }
 
-.edit-button:hover {
-    background-color: #E1B573;
-    box-shadow: -4px 4px 0px #262628;
+.submit-button:hover {
+    background-color: #d8a960;
 }
 
-.button-text {
-    font-size: 20px;
-    font-weight: 400;
-}
-
-.view-mode {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    justify-content: center; 
-    text-align: center; 
-    gap: 15px; 
-    min-height: 80vh; 
-    padding: 20px;
-}
-
-.view-field {
+.submit-button-text {
     font-size: 18px;
-    font-weight: 500;
-    color: #262628;
+    font-weight: bold;
 }
-

@@ -3,6 +3,9 @@ import express from "express";
 import mysql from "mysql2";
 import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
+import profileRoutes from "./routes/profileRoutes.js";
+import requestsRoutes from "./routes/requestsRoutes.js";
+import messagesRoutes from "./routes/messagesRoutes.js";
 
 dotenv.config();
 console.log("Database Host:", process.env.MYSQL_ADDON_HOST);
@@ -58,3 +61,6 @@ app.listen(8800, () => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/createProfile", profileRoutes);
+app.use("/api/requests", requestsRoutes);
+app.use("/api/messages", messagesRoutes);
